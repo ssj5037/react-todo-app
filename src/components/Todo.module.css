@@ -1,0 +1,52 @@
+.wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.checkbox{
+    display:none;
+}
+.checkbox + label{
+    cursor:pointer;
+}
+  
+  /* label:before에 체크하기 전 상태 CSS */
+.checkbox  + label:before{
+    content:"";
+    display:inline-block;
+    width:20px;
+    height:20px;
+    margin-right: 0.4rem;
+    border:2px solid #737373;
+    border-radius: 4px;
+    vertical-align:bottom;
+}
+    
+  /* label:before에 체크 된 상태 CSS */  
+.checkbox:checked + label:before{
+    content:"";
+    background-color:#737373;
+    border-color:#737373;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+.checkbox:checked + label {
+    text-decoration: line-through;
+    color: #d4d4d4;
+}
+
+
+.button {
+    border: 0;
+    background-color: #e5e5e5;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
