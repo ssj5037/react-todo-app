@@ -6,6 +6,7 @@ export default function InputTodo({setTotalTodos, lastId, setLastId}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (newTodo.length < 1) return;
         const newItem = {
             id: lastId,
             todo: newTodo,
@@ -17,7 +18,7 @@ export default function InputTodo({setTotalTodos, lastId, setLastId}) {
     }
     return (
         <form onSubmit={handleSubmit} className={styled.wrap}>
-            <input className={styled.input} placeholder='Add Todo' value={newTodo} onChange={(e)=>setNewTodo(e.target.value)}></input>
+            <input className={styled.input} placeholder='Add Todo' value={newTodo} onChange={(e)=>setNewTodo(e.target.value.trim())}></input>
             <button className={styled.button}>Add</button>
         </form>
     );
