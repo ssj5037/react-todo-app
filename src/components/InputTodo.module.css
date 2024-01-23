@@ -28,3 +28,17 @@
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
 }
+.button:after {
+    content: 'Add';
+}
+
+
+
+@media (max-width: 640px) { 
+    .input {
+      width: 100%;
+    }
+    .button:after {
+        content: '+';
+    }
+  }
