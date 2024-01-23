@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import styled from './InputTodo.module.css'
 
-let lastId = 4;
-export default function InputTodo({setTotalTodos}) {
+export default function InputTodo({setTotalTodos, lastId, setLastId}) {
     const [newTodo, setNewTodo] = useState('');
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,7 +12,7 @@ export default function InputTodo({setTotalTodos}) {
             done: false
         };
         setTotalTodos(prev => [...prev, newItem]);
-        lastId++;
+        setLastId(prev => +prev + 1);
         setNewTodo('');
     }
     return (
