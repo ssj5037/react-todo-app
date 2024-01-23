@@ -12,6 +12,10 @@ export default function Todo({data, setTotalTodos}) {
     useEffect(() => {
         setChecked(done);
     }, [done, setTotalTodos]);
+
+    useEffect(() => {
+        if (edit) inputFocus.current?.focus();
+    },[edit])
     
     const handleChange = () => {
         setChecked(prev => !prev);
@@ -25,7 +29,6 @@ export default function Todo({data, setTotalTodos}) {
             }
             return !prev;
         });
-        inputFocus.current?.focus();
     }
 
     const handleDelete = () => {
