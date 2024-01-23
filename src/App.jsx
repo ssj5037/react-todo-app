@@ -29,7 +29,7 @@ export default function App() {
   }, [darkTheme]);
 
   return (
-    <div className={`app ${darkTheme ? 'dark' : ''}`}>
+    <div className={`app ${darkTheme === 'dark' ? 'dark' : 'light'}`}>
       <div className='todo'>
         <Header filter={ filter } setFilter={setFilter} darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
         <Todos todos={todos} setTotalTodos={setTotalTodos} />

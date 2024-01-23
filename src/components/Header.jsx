@@ -6,8 +6,8 @@ export default function Header({ filter, setFilter, darkTheme, setDarkTheme }) {
 
     return (
         <header className={styled.header}>
-            <div className={styled.mode} onClick={()=>setDarkTheme(prev=>!prev)}>
-                {!darkTheme ? <FiMoon /> : <FiSun />}
+            <div className={styled.mode} onClick={()=>setDarkTheme(prev=>prev === 'dark'? 'light' : 'dark')}>
+                {darkTheme === 'dark' ? <FiSun /> :  <FiMoon />}
             </div>
             <div className={styled.filter}>
                 <span onClick={() => setFilter(undefined)} className={`${filter === undefined ? `${styled.active}`: ''}`}>All</span>
