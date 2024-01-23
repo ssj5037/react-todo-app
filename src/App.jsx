@@ -7,34 +7,40 @@ import Todos from './components/Todos';
 export default function App() {
   const [filter, setFilter] = useState();
   const [darkTheme, setDarkTheme] = useState(localStorage.getItem('todo-darkTheme'));
-  const [totalTodos, setTotalTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
-  const [lastId, setLastId] = useState(localStorage.getItem('lastId') || 0);
-  
-  useEffect(() => {
-    if (filter === undefined) setTodos(totalTodos);
-    else setTodos(totalTodos.filter(d => d.done === filter));
-  }, [filter, totalTodos]);
+  const filtered = getFilterTodos(todos, filter);
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(totalTodos));
-  }, [totalTodos]);
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
   
-  useEffect(() => {
-    localStorage.setItem('lastId', lastId);
-  }, [lastId]);
-
   useEffect(() => {
     localStorage.setItem('todo-darkTheme', darkTheme);
   }, [darkTheme]);
 
+  const handleTheme = () => setDarkTheme(prev => prev === 'dark' ? 'light' : 'dark');
+
+  const handleInsert = (inserted) =>
+    setTodos(prev => [...prev, inserted]);
+  
+  const handleUpdate = (updated) =>
+    setTodos(prev => prev.map(todo => todo.id === updated.id ? updated : todo));
+  
+  const handleDelete = (deleted) =>
+    setTodos(prev => prev.map(todo => todo.id !== deleted.id));
+
   return (
-    <div className={`app ${darkTheme === 'dark' ? 'dark' : 'light'}`}>
+    <div className={`app ${darkTheme}`}>
       <div className='todo'>
-        <Header filter={ filter } setFilter={setFilter} darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
-        <Todos todos={todos} setTotalTodos={setTotalTodos} />
-        <InputTodo setTotalTodos={setTotalTodos} lastId={lastId} setLastId={setLastId} />
+        <Header filter={ filter } onFilter={setFilter} darkTheme={darkTheme} onChangeTheme={handleTheme} />
+        <Todos todos={filtered} onUpdate={handleUpdate} onDelete={handleDelete} />
+        <InputTodo onInsert={handleInsert} />
       </div>
     </div>
   );
+}
+
+function getFilterTodos(todos, filter) {
+  if (filter === undefined) return todos;
+  else return todos.filter(todo => todo.done === filter);
 }

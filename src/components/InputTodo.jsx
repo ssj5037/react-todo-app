@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import styled from './InputTodo.module.css'
+import { v4 as uuid } from 'uuid';
 
-export default function InputTodo({setTotalTodos, lastId, setLastId}) {
+export default function InputTodo({onInsert}) {
     const [newTodo, setNewTodo] = useState('');
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         if (newTodo.length < 1) return;
         const newItem = {
-            id: lastId,
+            id: uuid(),
             todo: newTodo,
             done: false
         };
-        setTotalTodos(prev => [...prev, newItem]);
-        setLastId(prev => +prev + 1);
+        onInsert(newItem);
         setNewTodo('');
     }
     return (
