@@ -2,7 +2,7 @@
   --color-black: #000;
   --color-white: #fff;
 
-  --color-text: #000;
+  --color-text: #475569;
 
   --color-bg: #334155;
   --color-bg-header: #e2e8f0;
@@ -18,7 +18,7 @@
 }
 
 .app.dark {
-  --color-text: #fff;
+  --color-text: #f1f5f9;
 
   --color-bg: #0f172a;
   --color-bg-header: #334155;
