@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from './InputTodo.module.css'
 import { v4 as uuid } from 'uuid';
 
-export default function InputTodo({setTotalTodos, setLastId}) {
+export default function InputTodo({onInsert}) {
     const [newTodo, setNewTodo] = useState('');
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,7 +13,7 @@ export default function InputTodo({setTotalTodos, setLastId}) {
             todo: newTodo,
             done: false
         };
-        setTotalTodos(prev => [...prev, newItem]);
+        onInsert(newItem);
         setNewTodo('');
     }
     return (

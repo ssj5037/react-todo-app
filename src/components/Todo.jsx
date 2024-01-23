@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import styled from './Todo.module.css'
 
-export default function Todo({data, setTotalTodos}) {
+export default function Todo({data, onUpdate, onDelete}) {
     const { id, todo, done } = data;
     const [checked, setChecked] = useState(false);
     const [edit, setEdit] = useState(false);
@@ -11,28 +11,30 @@ export default function Todo({data, setTotalTodos}) {
 
     useEffect(() => {
         setChecked(done);
-    }, [done, setTotalTodos]);
+    }, [done]);
 
     useEffect(() => {
         if (edit) inputFocus.current?.focus();
     },[edit])
     
-    const handleChange = () => {
-        setChecked(prev => !prev);
-        setTotalTodos(prev => prev.map(item => item.id === id ? { ...item, done: !item.done}: item));
+    const handleCheckboxChange = () => {
+        setChecked(prev => {
+            onUpdate({id, todo, done: !prev})
+            return !prev;
+        });
     }
+
+    const handleTextChange = (e) => setEditTodo(e.target.value);
 
     const handleUpdate = () => {
         setEdit(prev => {
-            if (prev) {
-                setTotalTodos(prev => prev.map(item => item.id === id ? { ...item, todo: editTodo}: item));
-            }
+            if (prev) onUpdate({ id, todo: editTodo, done });
             return !prev;
         });
     }
 
     const handleDelete = () => {
-        setTotalTodos(prev => prev.filter(item => item.id !== id));
+        onDelete({ id });
     }
 
     return (
@@ -40,7 +42,7 @@ export default function Todo({data, setTotalTodos}) {
             {
                 !edit ?
                     <>
-                        <input className={styled.checkbox} id={`todo${id}`} type="checkbox" checked={checked} value={checked} onChange={handleChange} />
+                        <input className={styled.checkbox} id={`todo${id}`} type="checkbox" checked={checked} value={checked} onChange={handleCheckboxChange} />
                         <label className={styled.todo} htmlFor={`todo${id}`}>{todo}</label>
                     </>
                     :
@@ -50,7 +52,7 @@ export default function Todo({data, setTotalTodos}) {
                             type='text'
                             ref={inputFocus}
                             value={editTodo}
-                            onChange={(e) => setEditTodo(e.target.value)}
+                            onChange={handleTextChange}
                             onKeyUp={(e) => { if (e.key === 'Enter') handleUpdate(); }}
                         />
                     </>
