@@ -6,6 +6,7 @@ import Todos from './components/Todos';
 
 export default function App() {
   const [filter, setFilter] = useState();
+  const [darkTheme, setDarkTheme] = useState(false);
   const [totalTodos, setTotalTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
   const [lastId, setLastId] = useState(localStorage.getItem('lastId') || 0);
@@ -21,9 +22,9 @@ export default function App() {
   }, [totalTodos, lastId]);
 
   return (
-    <div className='app'>
+    <div className={`app ${darkTheme ? 'dark' : ''}`}>
       <div className='todo'>
-        <Header filter={ filter } setFilter={setFilter} />
+        <Header filter={ filter } setFilter={setFilter} darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
         <Todos todos={todos} setTotalTodos={setTotalTodos} />
         <InputTodo setTotalTodos={setTotalTodos} lastId={lastId} setLastId={setLastId} />
       </div>

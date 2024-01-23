@@ -1,14 +1,13 @@
 import React from 'react';
-import { FiSun } from "react-icons/fi";
+import { FiMoon, FiSun } from "react-icons/fi";
 import styled from './Header.module.css';
 
-export default function Header({ filter, setFilter }) {
+export default function Header({ filter, setFilter, darkTheme, setDarkTheme }) {
 
-    // const handleFilter = (data) => setFilter(data);
     return (
         <header className={styled.header}>
-            <div className={styled.mode}>
-                <FiSun />
+            <div className={styled.mode} onClick={()=>setDarkTheme(prev=>!prev)}>
+                {!darkTheme ? <FiMoon /> : <FiSun />}
             </div>
             <div className={styled.filter}>
                 <span onClick={() => setFilter(undefined)} className={`${filter === undefined ? `${styled.active}`: ''}`}>All</span>

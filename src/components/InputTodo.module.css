@@ -4,10 +4,11 @@
     justify-content: center;
     padding: 1.3rem 1rem;
     font-size: 1.3rem;
-    background: #f5f5f5;
+    background: var(--color-bg-header);
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--color-border);
+    transition: all 0.5s;
 }
 .input {
     border-top-left-radius: 0.5rem;
@@ -18,8 +19,8 @@
 }
 .button {
     border: 0;
-    background-color: #f97316;
-    color: white;
+    background-color: var(--color-bg-button-actived);
+    color: var(--color-white);
     font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
