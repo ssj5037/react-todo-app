@@ -38,9 +38,24 @@
     color: var(--color-bg-check-inactived);
 }
 
+.edit {
+    font-size: 1.2rem;
+    border-width: 0;
+    border-radius: 0.2rem;
+    width: 100%;
+    margin-right: 0.5rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+}
 
 .button {
     border: 0;
+    color: var(--color-text);
     background-color: var(--color-bg-check-inactived);
     width: 1.7rem;
     height: 1.7rem;
