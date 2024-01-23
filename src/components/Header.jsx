@@ -6,13 +6,13 @@ export default function Header({ filter, setFilter, darkTheme, setDarkTheme }) {
 
     return (
         <header className={styled.header}>
-            <div className={styled.mode} onClick={()=>setDarkTheme(prev=>!prev)}>
-                {!darkTheme ? <FiMoon /> : <FiSun />}
+            <div className={styled.mode} onClick={()=>setDarkTheme(prev=>prev === 'dark'? 'light' : 'dark')}>
+                {darkTheme === 'dark' ? <FiSun /> :  <FiMoon />}
             </div>
             <div className={styled.filter}>
-                <span onClick={() => setFilter(undefined)} className={`${filter === undefined ? `${styled.active}`: ''}`}>All</span>
-                <span onClick={() => setFilter(false)} className={`${filter === false ? `${styled.active}` : ''}`}>Active</span>
-                <span onClick={() => setFilter(true)} className={`${filter ? `${styled.active}` : ''}`}>Completed</span>
+                <span onClick={() => setFilter(undefined)} className={`${filter === undefined ? `${styled.active}`: ''}`}>전체</span>
+                <span onClick={() => setFilter(false)} className={`${filter === false ? `${styled.active}` : ''}`}>할 것</span>
+                <span onClick={() => setFilter(true)} className={`${filter ? `${styled.active}` : ''}`}>한 것</span>
             </div>
         </header>
     );
