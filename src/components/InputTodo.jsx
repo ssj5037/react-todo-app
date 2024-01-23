@@ -19,7 +19,7 @@ export default function InputTodo({setTotalTodos, lastId, setLastId}) {
     return (
         <form onSubmit={handleSubmit} className={styled.wrap}>
             <input className={styled.input} placeholder='Add Todo' value={newTodo} onChange={(e)=>setNewTodo(e.target.value.trim())}></input>
-            <button className={styled.button}>Add</button>
+            <button className={styled.button}></button>
         </form>
     );
 }
