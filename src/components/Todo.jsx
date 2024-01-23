@@ -15,11 +15,15 @@ export default function Todo({data, setTotalTodos}) {
         setTotalTodos(prev => prev.map(item => item.id === id ? { ...item, done: !item.done}: item));
     }
 
+    const handleDelete = () => {
+        setTotalTodos(prev => prev.filter(item => item.id !== id));
+    }
+
     return (
         <div className={styled.wrap}>
             <input className={styled.checkbox} id={`todo${id}`} type="checkbox" checked={checked} value={checked} onChange={handleChange} />
             <label className={styled.todo} htmlFor={`todo${id}`}>{todo}</label>
-            <button className={styled.button}><FaTrashAlt /></button>
+            <button className={styled.button} onClick={handleDelete}><FaTrashAlt /></button>
         </div>
     );
 }
