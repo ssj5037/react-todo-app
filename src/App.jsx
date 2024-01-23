@@ -9,7 +9,6 @@ export default function App() {
   const [darkTheme, setDarkTheme] = useState(localStorage.getItem('todo-darkTheme'));
   const [totalTodos, setTotalTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
-  const [lastId, setLastId] = useState(localStorage.getItem('lastId') || 0);
   
   useEffect(() => {
     if (filter === undefined) setTodos(totalTodos);
@@ -21,10 +20,6 @@ export default function App() {
   }, [totalTodos]);
   
   useEffect(() => {
-    localStorage.setItem('lastId', lastId);
-  }, [lastId]);
-
-  useEffect(() => {
     localStorage.setItem('todo-darkTheme', darkTheme);
   }, [darkTheme]);
 
@@ -33,7 +28,7 @@ export default function App() {
       <div className='todo'>
         <Header filter={ filter } setFilter={setFilter} darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
         <Todos todos={todos} setTotalTodos={setTotalTodos} />
-        <InputTodo setTotalTodos={setTotalTodos} lastId={lastId} setLastId={setLastId} />
+        <InputTodo setTotalTodos={setTotalTodos} />
       </div>
     </div>
   );
