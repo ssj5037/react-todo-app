@@ -19,7 +19,7 @@ function App() {
     <div className='app'>
       <div className='todo'>
         <Header filter={ filter } setFilter={setFilter} />
-        <Todos todos={todos} />
+        <Todos todos={todos} setTotalTodos={setTotalTodos} />
         <InputTodo setTotalTodos={setTotalTodos} />
       </div>
     </div>
