@@ -27,7 +27,7 @@ export default function App() {
     setTodos(prev => prev.map(todo => todo.id === updated.id ? updated : todo));
   
   const handleDelete = (deleted) =>
-    setTodos(prev => prev.map(todo => todo.id !== deleted.id));
+    setTodos(prev => prev.filter(todo => todo.id !== deleted.id));
 
   return (
     <div className={`app ${darkTheme}`}>
