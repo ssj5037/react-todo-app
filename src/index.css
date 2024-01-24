@@ -1,3 +1,42 @@
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+
+  --color-text: #475569;
+
+  --color-bg: #334155;
+  --color-bg-header: #e2e8f0;
+  --color-bg-main: #f1f5f9;
+  --color-bg-button-actived: #f97316;
+  --color-bg-button-inactived: #fdba74;
+  --color-border: #cbd5e1;
+
+  --color-bg-check-actived: #64748b;
+  --color-bg-check-inactived: #cbd5e1;
+
+  --color-scrollbar: #cbd5e1;
+  --color-scrollbar-actived: #94a3b8;
+
+  --shadow: rgba(0,0,0,0.7);
+}
+
+html.dark {
+  --color-text: #f1f5f9;
+
+  --color-bg: #0f172a;
+  --color-bg-header: #334155;
+  --color-bg-main: #475569;
+  --color-border: #64748b;
+
+  --color-bg-check-actived: #f1f5f9;
+  --color-bg-check-inactived: #64748b;
+
+  --color-scrollbar: #64748b;
+  --color-scrollbar-actived: #94a3b8;
+
+  --shadow: rgba(255,255,255,0.7);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +44,66 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--color-text);
+  background: var(--color-bg);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  transition: all 0.5s;
+  transition: color 0s;
+  accent-color: var(--color-bg-button-actived);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 30rem;
+  height: 40rem;
+  margin: auto;
+  background: var(--color-bg-main);
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 30px -0px ;
+  -webkit-box-shadow: 0px 0px 30px -0px var(--shadow);
+  -moz-box-shadow: 0px 0px 30px -0px var(--shadow);
+  transition: all 0.5s;
+}
+
+@media (max-width: 640px) { 
+  body {
+    width: 100%;
+    height: 100vh;
+  }
+  #root {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+* {
+  /* padding 합하여 계산됨 */
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+/* 스크롤바 막대 꾸미기 */
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar);
+}
+
+/* 스크롤바 트랙 꾸미기 */
+::-webkit-scrollbar-track {
+	background-color: var(--color-bg-main);
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--color-scrollbar-actived);
 }
