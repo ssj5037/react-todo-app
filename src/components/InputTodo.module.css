@@ -5,8 +5,6 @@
     padding: 1.3rem 1rem;
     font-size: 1.3rem;
     background: var(--color-bg-header);
-    border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
     border-top: 1px solid var(--color-border);
     transition: all 0.5s;
 }
@@ -30,6 +28,10 @@
 }
 .button:after {
     content: '+';
+    transition: all 150ms ease-out;
+}
+.button:hover {
+    filter: brightness(120%);
 }
 
 

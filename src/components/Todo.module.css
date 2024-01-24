@@ -7,32 +7,16 @@
 }
 
 .checkbox{
-    display:none;
-}
-.checkbox + label{
-    cursor:pointer;
-}
-  
-  /* label:before에 체크하기 전 상태 CSS */
-.checkbox  + label:before{
-    content:"";
-    display:inline-block;
     width:20px;
     height:20px;
-    margin-right: 0.4rem;
-    border:2px solid var(--color-bg-check-actived);
-    border-radius: 4px;
-    vertical-align:bottom;
+    cursor: pointer;
 }
-    
-  /* label:before에 체크 된 상태 CSS */  
-.checkbox:checked + label:before{
-    content:"";
-    background-color:var(--color-bg-check-actived);
-    border-color:var(--color-bg-check-actived);
-    background-repeat: no-repeat;
-    background-position: 50%;
+label {
+    flex: 1 1 0%;
+    margin-left: 0.5rem;
+    cursor: pointer;
 }
+
 .checkbox:checked + label {
     text-decoration: line-through;
     color: var(--color-bg-check-inactived);
@@ -64,4 +48,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 50ms ease-out;
+}
+.button:hover {
+    transform: scale(1.1);
 }
