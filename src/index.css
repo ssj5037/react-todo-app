@@ -20,6 +20,23 @@
   --shadow: rgba(0,0,0,0.7);
 }
 
+html.dark {
+  --color-text: #f1f5f9;
+
+  --color-bg: #0f172a;
+  --color-bg-header: #334155;
+  --color-bg-main: #475569;
+  --color-border: #64748b;
+
+  --color-bg-check-actived: #f1f5f9;
+  --color-bg-check-inactived: #64748b;
+
+  --color-scrollbar: #64748b;
+  --color-scrollbar-actived: #94a3b8;
+
+  --shadow: rgba(255,255,255,0.7);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

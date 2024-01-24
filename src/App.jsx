@@ -3,10 +3,11 @@ import './App.css';
 import Header from './components/Header';
 import InputTodo from './components/InputTodo';
 import Todos from './components/Todos';
+import { ThemeProvider } from './context/ThemeContext';
 
 export default function App() {
   const [filter, setFilter] = useState();
-  const [darkTheme, setDarkTheme] = useState(localStorage.getItem('todo-darkTheme'));
+  // const [darkTheme, setDarkTheme] = useState(localStorage.getItem('todo-darkTheme'));
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
   const filtered = getFilterTodos(todos, filter);
 
@@ -14,11 +15,11 @@ export default function App() {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
   
-  useEffect(() => {
-    localStorage.setItem('todo-darkTheme', darkTheme);
-  }, [darkTheme]);
+  // useEffect(() => {
+  //   localStorage.setItem('todo-darkTheme', darkTheme);
+  // }, [darkTheme]);
 
-  const handleTheme = () => setDarkTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  // const handleTheme = () => setDarkTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
   const handleInsert = (inserted) =>
     setTodos(prev => [...prev, inserted]);
@@ -30,13 +31,15 @@ export default function App() {
     setTodos(prev => prev.filter(todo => todo.id !== deleted.id));
 
   return (
-    <div className={`app ${darkTheme}`}>
-      <div className='todo'>
-        <Header filter={ filter } onFilter={setFilter} darkTheme={darkTheme} onChangeTheme={handleTheme} />
-        <Todos todos={filtered} onUpdate={handleUpdate} onDelete={handleDelete} />
-        <InputTodo onInsert={handleInsert} />
+    <ThemeProvider>
+      <div className='app'>
+        <div className='todo'>
+          <Header filter={ filter } onFilter={setFilter} />
+          <Todos todos={filtered} onUpdate={handleUpdate} onDelete={handleDelete} />
+          <InputTodo onInsert={handleInsert} />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

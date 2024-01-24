@@ -1,23 +1,4 @@
 
-.app.dark {
-  --color-text: #f1f5f9;
-
-  --color-bg: #0f172a;
-  --color-bg-header: #334155;
-  --color-bg-main: #475569;
-  --color-bg-button-actived: #f97316;
-  --color-bg-button-inactived: #fdba74;
-  --color-border: #64748b;
-
-  --color-bg-check-actived: #f1f5f9;
-  --color-bg-check-inactived: #64748b;
-
-  --color-scrollbar: #64748b;
-  --color-scrollbar-actived: #94a3b8;
-
-  --shadow: rgba(255,255,255,0.7);
-}
-
 .app {
   color: var(--color-text);
   background: var(--color-bg);
